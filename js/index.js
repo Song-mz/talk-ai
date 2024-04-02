@@ -71,8 +71,11 @@
 
     async function loadHistory() {
         const resp = await API.getHistory();
-        for (const item of resp.data) {
-            addChat(item);
+        console.log(resp);
+        if (resp.code !== 401) {
+            for (const item of resp.data) {
+                addChat(item);
+            }
         }
         scrollBottom();
     }
